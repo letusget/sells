@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<configuration>
+
+    <!-- (1)配置日志打印到 IDE工具的控制台Console start -->
+    <appender name="consoleLog" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- 日志的输出格式 start -->
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>
+                %d{yyyy-MM-dd HH:mm:ss:SSS}- %msg %n
+            </pattern>
+        </layout>
+        <!-- 日志的输出格式 end -->
+    </appender>
+    <!-- (1)配置日志打印到 IDE工具的控制台Console end -->
+
+
+    <!-- (2)将日志输出到指定目录下的文件 start -->
+    <appender name="fileLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 日志的输出格式 start -->
+        <encoder>
+            <pattern>
+                %logger %d %msg %n
+            </pattern>
+        </encoder>
+        <!-- 日志的输出格式 end -->
+
+        <!-- 配置滚动策略  -->
+        <!-- 滚动策略，按时间滚动，每天一个日志-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 配置路径  -->
+            <fileNamePattern>D:/JDK/logs/sells_info_%d.log</fileNamePattern>
+        </rollingPolicy>
+    </appender>
+    <!-- (2)将日志输出到指定目录下的文件 end -->
+
+    <!-- (3)将日志输出到指定目录下的文件 start -->
+    <appender name="fileErrorLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 只写入 error 级别的日志 start -->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>error</level>
+        </filter>
+        <!-- 只写入 error 级别的日志 end -->
+
+        <!-- 日志的输出格式 start -->
+        <encoder>
+            <pattern>
+                %logger %d %msg %n
+            </pattern>
+        </encoder>
+        <!-- 日志的输出格式 end -->
+
+        <!-- 配置滚动策略  -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 配置路径  -->
+            <fileNamePattern>D:/JDK/logs/sells_error_%d.log</fileNamePattern>
+        </rollingPolicy>
+    </appender>
+    <!-- (3)将日志输出到指定目录下的文件 end -->
+
+
+    <!-- 日志级别  输出level >= info级别的日志(info、 warn 、error) start -->
+    <root level="warn">
+        <appender-ref ref="consoleLog" />
+        <appender-ref ref="fileLog" />
+        <appender-ref ref="fileErrorLog" />
+    </root>
+    <!-- 日志级别  输出info级别的日志 end -->
+</configuration>

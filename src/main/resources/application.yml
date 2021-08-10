@@ -1,0 +1,13 @@
+spring:
+  freemarker:
+    suffix: .ftl  #加载后缀
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/table?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT
+    username: root
+    password: mysql159612
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    hibernate:
+      ddl-auto: update #如果这里是creat，则在每次更新后台之后，数据库中的内容都会被清空
+    show-sql: true

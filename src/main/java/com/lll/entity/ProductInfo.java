@@ -20,7 +20,7 @@ public class ProductInfo implements Serializable
     private static final long serialVersionUID=1L;
 
     /**
-     * 商品ID没有主键自增
+     * 商品ID没有主键自增，由于商品太多，不需要自增
      */
     @Id     //主键
     private String productId;

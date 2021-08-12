@@ -13,7 +13,7 @@ import java.util.List;
  */
 
 @Service
-
+//@Transactional  //事物处理
 public class ProductCategoryServiceImpl implements ProductCategoryService
 {
     @Autowired

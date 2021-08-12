@@ -20,6 +20,7 @@ import static org.junit.Assert.*;
 @SpringBootTest
 public class ProductInfoServiceImplTest {
 
+    //最好使用接口进行测试，即使实际新建的是实现类
     @Autowired
     private ProductInfoServiceImpl productService;
 

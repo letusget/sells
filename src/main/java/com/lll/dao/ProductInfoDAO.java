@@ -14,4 +14,5 @@ public interface ProductInfoDAO extends JpaRepository<ProductInfo,String>
      * 通过商品状态查询上架的商品
      */
     List<ProductInfo> queryByProductStatus(Integer productStatus);
+    //Page<ProductInfo> queryByProductStatus(Integer productStatus);
 }

@@ -60,7 +60,7 @@
 
 
     <!-- 日志级别  输出level >= info级别的日志(info、 warn 、error) start -->
-    <root level="warn">
+    <root level="info">
         <appender-ref ref="consoleLog" />
         <appender-ref ref="fileLog" />
         <appender-ref ref="fileErrorLog" />

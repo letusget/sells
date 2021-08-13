@@ -32,6 +32,7 @@ public interface OrderService
     /**  支付订单  */
     OrderDTO paid(OrderDTO orderDTO);
 
-
+    /**  带分页查询所有的订单列表  */
+    Page<OrderDTO> findList(Pageable pageable);
 
 }

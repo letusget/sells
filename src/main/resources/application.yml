@@ -1,6 +1,6 @@
 spring:
   freemarker:
-    suffix: .ftl  #加载后缀
+    suffix: .ftl  #加载后缀,设定 ftl 文件路径
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/table?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT

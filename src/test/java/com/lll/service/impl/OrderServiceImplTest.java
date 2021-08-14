@@ -126,4 +126,19 @@ public class OrderServiceImplTest
         System.out.println(result.getPayStatus());
     Assert.assertEquals(PayStatusEnum.SUCCESS.getCode(), result.getPayStatus());
     }
+
+    /**
+     * 带分页查询所有订单列表
+     */
+    @Test
+    public void list()
+    {
+        PageRequest request=PageRequest.of(0,2);
+        Page<OrderDTO> orderDTOPageList=orderService.findList(request);
+        System.out.println(orderDTOPageList);
+        //Assert.assertNotEquals(0,orderDTOPageList.getTotalElements());
+        Assert.assertTrue("带分页查询所有的订单列表",orderDTOPageList.getTotalElements()>0);
+    }
+
+
 }

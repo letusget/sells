@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public enum ResultEnum
 {
-    PRODUCT_NOT_EXSIT(100,"该商品不存在"),
+    PRODUCT_NOT_EXIST(100,"该商品不存在"),
     PRODUCT_STOCK_ERROR(101,"商品库存不正确（不足）"),
     ORDER_NOT_EXIST(102,"订单不存在"),
     ORDERDETAIL_NOT_EXIST(103,"订单明细不存在"),

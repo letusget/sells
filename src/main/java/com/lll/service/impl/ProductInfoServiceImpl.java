@@ -78,7 +78,7 @@ public class ProductInfoServiceImpl implements ProductInfoService
             if (productInfo == null)
             {
                 // 抛出自定义异常 "该商品不存在"
-                throw new SellException(ResultEnum.PRODUCT_NOT_EXSIT);
+                throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
             }
             // 增加库存
             Integer stocksNum = productInfo.getProductStock() + cartDTO.getProductQuantity();
@@ -106,7 +106,7 @@ public class ProductInfoServiceImpl implements ProductInfoService
             if (productInfo==null)
             {
                 //抛出自定义异常，显示 该商品不存在
-                throw new SellException(ResultEnum.PRODUCT_NOT_EXSIT);
+                throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
             }
 
             //剩余库存

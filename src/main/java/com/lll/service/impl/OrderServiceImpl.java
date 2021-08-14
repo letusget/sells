@@ -71,7 +71,7 @@ public class OrderServiceImpl implements OrderService
             {
                 //使用自定义异常
                 //抛出商品不存在异常
-                throw new SellException(ResultEnum.PRODUCT_NOT_EXSIT);
+                throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
             }
 
             //2. 计算订单总价 = 不同商品的价值和（单个商品的单价*此商品的数量）
@@ -286,5 +286,22 @@ public class OrderServiceImpl implements OrderService
         }
 
         return orderDTO;
+    }
+
+    /**
+     * 带分页查询所有的订单列表
+     *
+     * @param pageable
+     */
+    @Override
+    public Page<OrderDTO> findList(Pageable pageable)
+    {
+        //带分页 查询所有的 订单列表
+        Page<OrderMaster> orderMasterPageList=orderMasterDAO.findAll(pageable);
+
+        //OrderMaster 转换为 OrderDTO
+        List<OrderDTO> orderDTOList =OrderMaster2OrderDTOConverter.convert(orderMasterPageList.getContent());
+
+        return new PageImpl<OrderDTO>(orderDTOList,pageable,orderMasterPageList.getTotalElements());
     }
 }

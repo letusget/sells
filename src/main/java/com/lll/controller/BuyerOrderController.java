@@ -26,7 +26,7 @@ import java.util.Map;
 
 /**
  * 用户订单
- * http://localhost:8080/buyer/order/create
+ * http://localhost:8080/sell/buyer/order/create
  */
 @Slf4j
 @RestController
@@ -38,7 +38,7 @@ public class BuyerOrderController
 
     //1. 创建订单 /buyer/order/create
     //实体类校验信息BingingResult返回结果绑定
-    //http://localhost:8080/buyer/order/create
+    //http://localhost:8080/sell/buyer/order/create
     @PostMapping("/create")
     public ResultVO<Map<String,String>> create(@Valid OrderForm orderForm, BindingResult bindingResult)
     {
@@ -69,7 +69,7 @@ public class BuyerOrderController
     }
 
     //2. 订单列表 -> GET  /buyer/order/list
-    //http://localhost:8080/buyer/order/list
+    //http://localhost:8080/sell/buyer/order/list
     @GetMapping("/list")
     public ResultVO<List<OrderDTO>> list
     (@RequestParam("openid") String openid,@RequestParam("page") Integer page,@RequestParam("size") Integer size)
@@ -96,7 +96,7 @@ public class BuyerOrderController
     }
 
     //3. 订单详情 ->GET   /buyer/order/list
-    //http://localhost:8080/buyer/order/detail
+    //http://localhost:8080/sell/buyer/order/detail
     @GetMapping("/detail")
     public ResultVO<OrderDTO> detail(@RequestParam("openid") String openid, @RequestParam("orderId") String orderid)
     {
@@ -108,7 +108,7 @@ public class BuyerOrderController
     }
 
     //4. 取消订单 ->  GET   /buyer/order/cancel
-    // http://localhost:8080/buyer/order/cancel
+    // http://localhost:8080/sell/buyer/order/cancel
     @PostMapping("/cancel")
     public ResultVO cancel(@RequestParam("openid") String openid,@RequestParam("orderId") String orderId)
     {

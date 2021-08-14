@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 
 /**
  * 买家商品
- * http://localhost:8080/buyer/product/list
+ * http://localhost:8080/sell/buyer/product/list
  * 配置好后的网址：http://sells.com/#/
  */
 @RestController //返回JSON 数据

@@ -24,7 +24,9 @@ public enum ResultEnum
     ORDER_PAY_STATUS_ERROR(107,"订单支付状态异常（已支付）"),
     PARAM_ERROR(108,"参数不正确"),
     CART_EMPTY(109,"购物车不能为空"),
-    ORDER_OWNER_ERROR(110,"该订单不属于当前用户");
+    ORDER_OWNER_ERROR(110,"该订单不属于当前用户"),
+    WECHAT_MP_ERROR(111, "微信公众账号方面错误"),
+    ORDER_CANCEL_SUCCESS(112,"订单取消成功");
 
     /**
      * 错误代码

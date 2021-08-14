@@ -24,7 +24,6 @@ public class ProductCategoryServiceImplTest
     @Test
     public void findById()
     {
-
             ProductCategory productCategory = productCategoryService.findById(1);
             Assert.assertEquals(new Integer(1),productCategory.getCategoryId());
 

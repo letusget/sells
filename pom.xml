@@ -15,12 +15,17 @@
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
+        <!--如果不使用下面这两条语句会报错：springBoot  Cannot resolve MVC view，导致访问页面404，可能是使用阿里 新建项目的问题-->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
     </properties>
     <dependencies>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <!-- spring-boot-starter其中包含了 spring-boot-starter-logging  而spring-boot-starter-web 包含了spring-boot-starter,所以我们只需要引入web组件即可不需要额外添加logback的依赖-->
+            <!-- spring-boot-starter其中包含了 spring-boot-starter-logging
+            而spring-boot-starter-web 包含了spring-boot-starter,所以我们只需要引入web组件即可不需要额外添加logback的依赖-->
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
@@ -29,6 +34,22 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!--访问页面 start -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <!--访问页面 end -->
+
+
+        <!--模板引擎处理/视图技术/动态页面 start-->
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-freemarker -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
+        </dependency>
+        <!--模板引擎处理/视图技术/动态页面 end-->
 
         <!-- 谷歌出的JSON转换工具 start  -->
         <dependency>
@@ -105,10 +126,18 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-
+                <version>2.3.7.RELEASE</version>
                 <configuration>
                     <fork>true</fork>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>repackage</id>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

@@ -1,6 +1,15 @@
 spring:
   freemarker:
     suffix: .ftl  #加载后缀,设定 ftl 文件路径
+    cache: false  #页面不加载缓存，实现修改即时生效
+  mvc:
+    static-path-pattern: /static/**
+  web:
+    resources:
+      static-locations: classpath:/static/
+  devtools:
+    restart:
+      enabled: true #开启热部署
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/table?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT
@@ -12,8 +21,8 @@ spring:
       ddl-auto: update #如果这里是create，则在每次更新后台之后，数据库中的内容都会被清空
     show-sql: true
     open-in-view: false
-  server: #配置应用名
-    servlet:
-     context-path:/sell
+server: #配置应用名
+  servlet:
+    context-path: /sell
   jackson:
      default-property-inclusion: non_null

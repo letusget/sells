@@ -1,10 +1,12 @@
 package com.lll.DTO;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.lll.entity.OrderDetail;
 import com.lll.enums.OrderStatusEnum;
 import com.lll.enums.PayStatusEnum;
+import com.lll.utils.EnumUtil;
 import lombok.Data;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -71,5 +73,23 @@ public class OrderDTO
     //private List<OrderDetail> orderDetails = new ArrayList<>();
             // 在规范化接口文档中(如果字段为null则统一不返回) orderDetailList是作为非必须返回字段
     List<OrderDetail> orderDetails;
+
+    /**
+     * 获取订单状态 枚举常量类
+     */
+    @JsonIgnore
+    public OrderStatusEnum getOrderStatusEnum()
+    {
+        return EnumUtil.getByCode(orderStatus,OrderStatusEnum.class);
+    }
+
+    /**
+     * 获取 支付状态 枚举常量类
+     */
+    @JsonIgnore
+    public PayStatusEnum getPayStatusEnum()
+    {
+        return EnumUtil.getByCode(payStatus,PayStatusEnum.class);
+    }
 
 }

@@ -127,9 +127,17 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.3.7.RELEASE</version>
+
                 <configuration>
+                    <!-- 增加fork(交叉)  只有增加fork的值为true 才允许热部署 -->
+                    <!--
+                        devtools中提供了2个类加载器：
+                       一个是默认原有的类加载器,另外一个类加载器会去监视我们的系统中资源的变化,
+                       主要是.class文件发生变化, 一旦发生了变化就会把修改的内容动态的reloading到服务器中去
+                    -->
                     <fork>true</fork>
                 </configuration>
+
                 <executions>
                     <execution>
                         <id>repackage</id>

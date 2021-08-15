@@ -57,22 +57,22 @@
                         <tbody>
                             <#if orderDTO.orderDetails??>
                                 <#--此处处理有问题！！-->
-                               <#-- <#list orderDTO.orderDetails as orderDetail>-->
-                                    <#--<tr>
+                              <#list orderDTO.orderDetails as orderDetail>
+                                    <tr>
                                         <td>${orderDetail_index+1}</td>
                                         <td>${orderDetail.productName}</td>
                                         <td>${orderDetail.productPrice}</td>
                                         <td>${orderDetail.productQuantity}</td>
                                         <td>${orderDetail.productQuantity*orderDetail.productPrice}</td>
-                                    </tr>-->
-                                    <tr>
+                                    </tr>
+                                    <#--<tr>
                                         <td>1</td>
                                         <td>2</td>
                                         <td>3</td>
                                         <td>4</td>
                                         <td>5</td>
-                                    </tr>
-                               <#-- </#list>-->
+                                    </tr>-->
+                                </#list>
                             </#if>
                         </tbody>
                     </table>

@@ -147,6 +147,8 @@ public class OrderServiceImpl implements OrderService
 
         OrderDTO orderDTO=new OrderDTO();
         BeanUtils.copyProperties(orderMaster,orderDTO);
+        //set到返回值orderDTO中去
+        orderDTO.setOrderDetails(orderDetailList);
 
         return orderDTO;
 

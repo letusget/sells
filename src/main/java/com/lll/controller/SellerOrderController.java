@@ -3,6 +3,7 @@ package com.lll.controller;
 import com.lll.DTO.OrderDTO;
 import com.lll.enums.ResultEnum;
 import com.lll.service.OrderService;
+import com.sun.corba.se.impl.resolver.ORBDefaultInitRefResolverImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import sun.rmi.runtime.Log;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Map;
 
 /**
@@ -64,27 +66,35 @@ public class SellerOrderController
     public ModelAndView cancel(@RequestParam("orderId") String orderId,
                                Map<String,Object> map, HttpServletRequest request)
     {
-        //根据订单Id 查询相关订单信息
-        OrderDTO orderDTO=orderService.findById(orderId);
-        String contextPath="";
-        if (orderDTO==null)
-        {
-            map.put("msg", ResultEnum.ORDER_NOT_EXIST.getMessage());
-            //获取应用名，较为灵活
-            contextPath=request.getContextPath();
-            map.put("url",contextPath+"/seller/order/list");
-            return new ModelAndView("common/error",map);
+        String contextPath = "";
 
+        try
+        {
+            // 根据订单ID 查询相关订单信息
+            OrderDTO orderDTO = orderService.findById(orderId);
+
+            // 取消订单操作
+            OrderDTO cancelOrderDTO = orderService.cancel(orderDTO);
+        } catch (Exception e)
+        {
+            log.error("【卖家端取消订单】发生异常{}", e);
+            contextPath = request.getContextPath(); // 灵活获取应用名 如/sell
+            map.put("url", contextPath + "/seller/order/list");
+            map.put("msg", e.getMessage());
+            return new ModelAndView("common/error", map);
         }
-        OrderDTO cancelOrderDTO=orderService.cancel(orderDTO);
-        map.put("msg",ResultEnum.ORDER_CANCEL_SUCCESS.getMessage());
+
+        map.put("msg", ResultEnum.ORDER_CANCEL_SUCCESS.getMessage());
         map.put("url", "/sell/seller/order/list");
         return new ModelAndView("common/success");
+
+
     }
 
     /**
      * 订单详情
      * http://192.168.1.19:8080/sell/seller/order/detail
+     * http://192.168.1.19:8080/sell//seller/order/list?page=1&size=2
      *http://192.168.1.19:8080/sell/seller/order/detail?orderId=1626841653412798517
      */
     @GetMapping("/detail")
@@ -103,10 +113,33 @@ public class SellerOrderController
             contextPath=request.getContextPath();
             map.put("url",contextPath+"/seller/order/list");
             map.put("msg",e.getMessage());
-            return new ModelAndView("common/error",map);
+            return new ModelAndView("common/no_order_detail_error",map);
         }
         map.put("orderDTO",orderDTO);
         return new ModelAndView("order/detail",map);
+
+    }
+
+    /**
+     * 完结订单
+     */
+    @GetMapping("/finish")
+    public ModelAndView finish(@RequestParam("orderId") String orderId,HttpServletRequest request)
+    {
+        HttpSession session=request.getSession();
+        try{
+            OrderDTO orderDTO=orderService.findById(orderId);
+            orderService.finish(orderDTO);
+        }catch (Exception e)
+        {
+            log.error("[卖家端完结订单] 发生异常{}",e);
+            session.setAttribute("msg",e.getMessage());
+            session.setAttribute("url","/sell/seller/order/list");
+            return new ModelAndView("common/error");
+        }
+        session.setAttribute("msg",ResultEnum.ORDER_FINISH_SUCCESS.getMessage());
+        session.setAttribute("url","/sell/seller/order/list");
+        return new ModelAndView("common/order_finish_success");
 
     }
 

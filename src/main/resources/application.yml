@@ -1,7 +1,7 @@
 spring:
   freemarker:
     suffix: .ftl  #加载后缀,设定 ftl 文件路径
-    cache: false  #页面不加载缓存，实现修改即时生效
+    cache: false  #Freemarker页面不加载缓存，实现修改即时生效
   mvc:
     static-path-pattern: /static/**
   web:

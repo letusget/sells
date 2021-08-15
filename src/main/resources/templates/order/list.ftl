@@ -47,9 +47,9 @@
                            <td>${orderDTO.getOrderStatusEnum().message}</td>
                            <td>${orderDTO.getPayStatusEnum().message}</td>
                            <td>${orderDTO.createTime}</td>
-                           <td>详情</td>
-                           <#--跳转有问题！！！-->
-                           <td> <a href="/sell/seller/order/cancel">取消</a> </td>
+                           <td><a href="/sell/seller/order/detail?orderId=${orderDTO.orderId}">详情</a></td>
+
+                           <td><a href="/sell/seller/order/cancel?orderId=${orderDTO.orderId}">取消</a> </td>
                        </tr>
                        </#list>
                     </tbody>

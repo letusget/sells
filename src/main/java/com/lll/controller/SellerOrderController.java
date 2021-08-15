@@ -3,6 +3,7 @@ package com.lll.controller;
 import com.lll.DTO.OrderDTO;
 import com.lll.enums.ResultEnum;
 import com.lll.service.OrderService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import sun.rmi.runtime.Log;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
@@ -19,6 +21,7 @@ import java.util.Map;
 /**
  * 分页查询 所有用户订单列表
  */
+@Slf4j
 @Controller
 @RequestMapping("/seller/order")
 public class SellerOrderController
@@ -77,10 +80,37 @@ public class SellerOrderController
         map.put("msg",ResultEnum.ORDER_CANCEL_SUCCESS.getMessage());
         map.put("url", "/sell/seller/order/list");
         return new ModelAndView("common/success");
+    }
 
-        //TODO list 取消订单中跳转有问题
+    /**
+     * 订单详情
+     * http://192.168.1.19:8080/sell/seller/order/detail
+     *http://192.168.1.19:8080/sell/seller/order/detail?orderId=1626841653412798517
+     */
+    @GetMapping("/detail")
+    public ModelAndView detail(@RequestParam("orderId")
+                                           String orderId,Map<String,Object> map,HttpServletRequest request)
+    {
+        String contextPath="";
+        OrderDTO orderDTO=new OrderDTO();
+        try{
+            //根据订单ID 查询相关订单信息
+            orderDTO=orderService.findById(orderId);
+        }catch (Exception e)
+        {
+            log.error("[买家端查询订单异常]发生异常{}",e);
+            //可以灵活取到应用名
+            contextPath=request.getContextPath();
+            map.put("url",contextPath+"/seller/order/list");
+            map.put("msg",e.getMessage());
+            return new ModelAndView("common/error",map);
+        }
+        map.put("orderDTO",orderDTO);
+        return new ModelAndView("order/detail",map);
 
     }
+
+
 
 }
 

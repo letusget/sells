@@ -18,7 +18,7 @@ public enum ResultEnum
     PRODUCT_STOCK_ERROR(101,"商品库存不正确（不足）"),
     ORDER_NOT_EXIST(102,"订单不存在"),
     ORDERDETAIL_NOT_EXIST(103,"订单明细不存在"),
-    ORDER_STATUS_ERROR(104,"不是新订单，抛出自定义异常： 该订单不是新订单不能取消"),
+    ORDER_STATUS_ERROR(104,"该订单不是新订单不能取消"),
     ORDER_UPDATE_FALL(105,"订单更新失败请确认订单信息"),
     ORDER_DETAIL_EMPTY(106,"订单明细为空"),
     ORDER_PAY_STATUS_ERROR(107,"订单支付状态异常（已支付）"),
@@ -27,7 +27,8 @@ public enum ResultEnum
     ORDER_OWNER_ERROR(110,"该订单不属于当前用户"),
     WECHAT_MP_ERROR(111, "微信公众账号方面错误"),
     ORDER_CANCEL_SUCCESS(112,"订单取消成功"),
-    ORDER_FINISH_SUCCESS(113,"订单完结成功");
+    ORDER_FINISH_SUCCESS(113,"订单完结成功"),
+    PRODUCT_STATUS_ERROR(114,"商品状态不正确");
 
     /**
      * 错误代码

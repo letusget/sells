@@ -113,10 +113,12 @@ public class SellerOrderController
             contextPath=request.getContextPath();
             map.put("url",contextPath+"/seller/order/list");
             map.put("msg",e.getMessage());
-            return new ModelAndView("common/no_order_detail_error",map);
+            //return new ModelAndView("common/no_order_detail_error",map);
+            return new ModelAndView("common/error", map);
         }
         map.put("orderDTO",orderDTO);
         return new ModelAndView("order/detail",map);
+
 
     }
 
@@ -139,7 +141,8 @@ public class SellerOrderController
         }
         session.setAttribute("msg",ResultEnum.ORDER_FINISH_SUCCESS.getMessage());
         session.setAttribute("url","/sell/seller/order/list");
-        return new ModelAndView("common/order_finish_success");
+        //return new ModelAndView("common/order_finish_success");
+        return new ModelAndView("common/success");
 
     }
 

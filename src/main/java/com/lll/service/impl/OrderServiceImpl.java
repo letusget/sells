@@ -53,7 +53,7 @@ public class OrderServiceImpl implements OrderService
     public OrderDTO create(OrderDTO orderDTO)
     {
         //随机生成订单Id
-        String orderId=KeyUtil.genUniqueKey8();
+        String orderId=KeyUtil.genUniqueKey();
 
         //商品购买总价
         //可以被包装为 new BigDecimal(BigInteger.ZERO)
@@ -90,7 +90,7 @@ public class OrderServiceImpl implements OrderService
 
             //订单明细先入库，然后订单入库
             //入库要自己生成主键，可以使用随机数但是推荐使用UUID
-            orderDetail.setDetailId(KeyUtil.genUniqueKey8());
+            orderDetail.setDetailId(KeyUtil.genUniqueKey());
             orderDetail.setOrderId(orderId);
             //将productInfo中的对象复制到orderDetail中
             BeanUtils.copyProperties(productInfo,orderDetail);

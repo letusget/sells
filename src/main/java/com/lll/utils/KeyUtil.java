@@ -32,7 +32,7 @@ public class KeyUtil
             "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U",
             "V", "W", "X", "Y", "Z" };
 
-    public static  String genUniqueKey8()
+    public static  String genUniqueKey()
     {
         StringBuffer shortBuffer = new StringBuffer();
         //将生成的UUID的 "-" 替换为 " "

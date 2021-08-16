@@ -1,10 +1,13 @@
 package com.lll.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 商品类目表对应的 JavaBean，对应 product_category
@@ -34,20 +37,18 @@ public class ProductCategory implements Serializable
     @Column(name = "category_type")
     private Integer categoryType;
 
-
-
     /**
      * 创建时间
      */
-    // @Column(name = "create_time")
-    // private Date createTime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd  HH:mm:ss")
+     private Date createTime;
 
 
     /**
      * 提交时间
      */
-    // @Column(name = "update_time")
-    // private Date updateTime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd  HH:mm:ss")
+     private Date updateTime;
 
 
 

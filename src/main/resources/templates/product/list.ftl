@@ -39,7 +39,7 @@
                                             <td>${productInfo.productId}</td>
                                             <td>${productInfo.productName}</td>
                                             <td><img height="100" width="100" src="${productInfo.productIcon}" alt="该图片不存在!"></td>
-                                            <td>${productInfo.productPrice}</td>
+                                            <td>${(productInfo.productPrice)?c!}</td>
                                             <td>${productInfo.productStock}</td>
                                             <td>${productInfo.productDescription}</td>
                                             <td>${productInfo.categoryType}</td>

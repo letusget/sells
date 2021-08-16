@@ -24,17 +24,17 @@ import java.util.Date;
 /**
  * 订单DTO
  */
-@Entity
+//@Entity
 @Data
 @DynamicUpdate
 @DynamicInsert //这里需要这个注解，否则在单元测试时就会报错：Column 'create_time' cannot be null
-@Table(name = "order_master")
+//@Table(name = "order_master")
 // 当JSON返回数据中的属性名对应的属性值为null是则最终返回的JSON数据中就不返回
 //@JsonInclude(JsonInclude.Include.NON_NULL)
 public class OrderDTO
 {
     /** 订单id */
-    @Id
+    //@Id
     private String orderId;
 
     /** 买家名字 */

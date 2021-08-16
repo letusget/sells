@@ -128,4 +128,24 @@ public class ProductInfoServiceImpl implements ProductInfoService
         }
 
     }
+
+    /**
+     * 商品上架
+     *
+     * @param productId
+     */
+    @Override
+    public ProductInfo onSale(String productId) {
+        return null;
+    }
+
+    /**
+     * 商品下架
+     *
+     * @param productId
+     */
+    @Override
+    public ProductInfo offSale(String productId) {
+        return null;
+    }
 }

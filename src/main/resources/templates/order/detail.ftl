@@ -1,18 +1,19 @@
 <html>
-    <head>
-        <#--
+    <#--<head>
+        &lt;#&ndash;
         <meta charset="utf-8">
         <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.0.1/css/bootstrap.css" rel="stylesheet">
         <#assign  path="${springMacroRequestContext.getContextPath()}">
         <script src="${path}/static/js/jquery-3.2.1.js" type="text/javascript" ></script>
         <script src="${path}/static/js/time.js" type="text/javascript" ></script>
-        -->
+        &ndash;&gt;
         <!-- 如果以上每个文件夹下都有相同名称的资源文件的时候, Spring Boot获取顺序依次为:
-        META-INF/resource下==>resources下==>static下==>public下 -->
-        <#-- (1) 引入头文件 -->
-        <#include "../common/header.ftl">
+        META-INF/resource下==>resources下==>static下==>public下 &ndash;&gt;
 
-    </head>
+
+    </head>-->
+    <#-- (1) 引入头文件 -->
+    <#include "../common/header.ftl">
 
     <body>
     <#--自己写的 div start-->
@@ -68,7 +69,7 @@
                             <tbody>
                                 <#if orderDTO.orderDetails??>
                                     <#--此处处理有问题！！-->
-                                  <#list orderDTO.orderDetails as orderDetail>
+                                    <#list orderDTO.orderDetails as orderDetail>
                                         <tr>
                                             <td>${orderDetail_index+1}</td>
                                             <td>${orderDetail.productName}</td>
@@ -76,7 +77,6 @@
                                             <td>${orderDetail.productQuantity}</td>
                                             <td>${orderDetail.productQuantity*orderDetail.productPrice}</td>
                                         </tr>
-
                                     </#list>
                                 </#if>
                             </tbody>
@@ -95,7 +95,6 @@
 
                 </div>
                 <#--某个订单信息 end -->
-
             </div>
         </div>
     <#--某个订单的信息的详细列表 end -->

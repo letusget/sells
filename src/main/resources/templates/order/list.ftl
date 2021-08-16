@@ -10,15 +10,20 @@
 <html>
 <#-- 1. 引入头文件-->
 
+<#--
 
     <head>
-        <#--<meta charset="utf-8">
-        <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">-->
+        &lt;#&ndash;
+        &lt;#&ndash;<meta charset="utf-8">
+        <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">&ndash;&gt;
+        &ndash;&gt;
         <#include  "../common/header.ftl">
     </head>
+-->
 
+<#include  "../common/header.ftl">
     <body>
-<#--这里有大问题！！！-->
+
     <#--2. 自己写的 div start -->
     <div id="wrapper" class="toggled">
     <#-- 3. 边栏 sidebar-->

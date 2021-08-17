@@ -26,3 +26,6 @@ server: #配置应用名
     context-path: /sell
   jackson:
      default-property-inclusion: non_null
+wechte:
+  mpAppId: wx7910e779a4c3a3a9
+  mpAppSecret: 04a880fcce26443420b9dbd78e61b851

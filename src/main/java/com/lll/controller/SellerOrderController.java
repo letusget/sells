@@ -3,7 +3,6 @@ package com.lll.controller;
 import com.lll.DTO.OrderDTO;
 import com.lll.enums.ResultEnum;
 import com.lll.service.OrderService;
-import com.sun.corba.se.impl.resolver.ORBDefaultInitRefResolverImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -14,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import sun.rmi.runtime.Log;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -40,7 +39,7 @@ public class SellerOrderController
      */
     @GetMapping("/list")
     public ModelAndView list(@RequestParam(value = "page",defaultValue = "1") Integer page,
-                             @RequestParam(value = "size",defaultValue = "2") Integer size,
+                             @RequestParam(value = "size",defaultValue = "8 ") Integer size,
                              Map<String,Object> map)
     {
         PageRequest pageRequest=PageRequest.of(page-1,size);

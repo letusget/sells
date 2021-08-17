@@ -5,6 +5,7 @@ import com.lll.entity.OrderDetail;
 import com.lll.enums.OrderStatusEnum;
 import com.lll.enums.PayStatusEnum;
 import com.lll.service.OrderService;
+import com.lll.utils.KeyUtil;
 import com.sun.istack.NotNull;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
@@ -33,8 +34,9 @@ public class OrderServiceImplTest
     @Autowired
     private OrderService orderService;
 
-    private final String BUYER_OPENID="1101110";
-    private final String ORDER_ID="PyKC2siW";
+    private final String BUYER_OPENID="1101118";
+    private final String ORDER_ID= KeyUtil.genUniqueKey();
+
 
     /**
      * 创建订单
@@ -43,15 +45,15 @@ public class OrderServiceImplTest
     public void create()
     {
         OrderDTO orderDTO=new OrderDTO();
-        orderDTO.setBuyerName("清风");
-        orderDTO.setBuyerAddress("成岚");
-        orderDTO.setBuyerAddress("南京");
-        orderDTO.setBuyerPhone("18658415864");
+        orderDTO.setBuyerName("周青");
+        //orderDTO.setBuyerAddress("成岚");
+        orderDTO.setBuyerAddress("北京市雄安区");
+        orderDTO.setBuyerPhone("13628459562");
         orderDTO.setBuyerOpenid(BUYER_OPENID);
 
         List<OrderDetail> orderDetailList=new ArrayList<OrderDetail>();
         OrderDetail o1=new OrderDetail();
-        o1.setProductId("2");   //需要在库中真实存在
+        o1.setProductId("1");   //需要在库中真实存在
         o1.setProductQuantity(2); //设置商品数量
 
         OrderDetail o2=new OrderDetail();

@@ -12,7 +12,7 @@ public class IndexController
 {
     @RequestMapping("MP_verify_rKLU5DbXF062Q0L0.txt")
     public String wxPrivateKey(){
-        //直接返回你下载的授权文件里的内容就好
+        //直接返回下载的授权文件里的内容
         return "rKLU5DbXF062Q0L0";
     }
 }

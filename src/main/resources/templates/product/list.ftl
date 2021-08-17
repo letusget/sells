@@ -14,6 +14,8 @@
         <div class="page-content-wrapper">
             <div class="container-fluid">
                 <div class="row clearfix">
+                    <#--显示系统时间-->
+                    <div class="showTime">当前时间：2021年8月17-12时35分16秒</div>
                     <!-- 表格内容 start  -->
                     <div class="col-md-12 column">
                         <table class="table table-bordered table-condensed">

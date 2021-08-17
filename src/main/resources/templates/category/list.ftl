@@ -11,6 +11,8 @@
         <div class="container-fluid">
             <div class="row clearfix">
                 <div class="col-md-12 column">
+                    <#--显示系统时间-->
+                    <div class="showTime">当前时间：2021年8月17-12时35分16秒</div>
                     <table class="table table-bordered table-condensed">
                         <thead>
                         <tr>

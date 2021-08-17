@@ -15,6 +15,8 @@
                 <div class="row clearfix">
                     <!--  复制 从 http://www.ibootstrap.cn 里面下载的内容 start -->
                     <div class="col-md-12 column">
+                        <#--显示系统时间-->
+                        <div class="showTime">当前时间：2021年8月17-12时35分16秒</div>
                         <form role="form" method="post" action="/sell/seller/product/save">
                             <div class="form-group">
                                 <label>商品名称</label><input type="text" class="form-control" id="productName" name="productName" value="${(product.productName)!''}"/>

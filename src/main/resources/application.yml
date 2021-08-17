@@ -21,8 +21,8 @@ spring:
       ddl-auto: update #如果这里是create，则在每次更新后台之后，数据库中的内容都会被清空
     show-sql: true
     open-in-view: false
-#server: #配置应用名
-  #servlet:
-    #context-path: /sell
+server: #配置应用名
+  servlet:
+    context-path: /sell
   jackson:
      default-property-inclusion: non_null

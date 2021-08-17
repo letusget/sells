@@ -22,6 +22,7 @@ import java.util.Map;
 /**
  * 卖家类目
  * http://iswilliam.natapp1.cc/seller/product/list
+ * http://localhost:8080/sell/seller/product/list
  */
 @Controller
 @RequestMapping("/seller/category")

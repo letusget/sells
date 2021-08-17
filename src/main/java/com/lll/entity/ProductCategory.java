@@ -1,6 +1,7 @@
 package com.lll.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -16,6 +17,7 @@ import java.util.Date;
 @Data   //使用 lombok自动生成get set 及构造方法
 @Table(name = "product_category")
 @DynamicUpdate  //可以实现数据库中字段更新时间的记录
+@DynamicInsert
 public class ProductCategory implements Serializable
 {
     /**
@@ -41,6 +43,7 @@ public class ProductCategory implements Serializable
      * 创建时间
      */
     @DateTimeFormat(pattern = "yyyy-MM-dd  HH:mm:ss")
+    @CreationTimestamp  //使用这个注解就可以实现在新增类目时不会出现crete_time 为null 的情形，导致异常500错误
      private Date createTime;
 
 
@@ -48,6 +51,7 @@ public class ProductCategory implements Serializable
      * 提交时间
      */
     @DateTimeFormat(pattern = "yyyy-MM-dd  HH:mm:ss")
+    @CreationTimestamp
      private Date updateTime;
 
 

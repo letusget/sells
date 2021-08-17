@@ -38,7 +38,7 @@ public class KeyUtil
         //将生成的UUID的 "-" 替换为 " "
         String uuid = UUID.randomUUID().toString().replace("-", "");
         //生成8位 UUID
-        for (int i = 0; i < 19; i++) {
+        for (int i = 0; i < 8; i++) {
             String str = uuid.substring(i * 4, i * 4 + 4);
             int x = Integer.parseInt(str, 16);
             shortBuffer.append(chars[x % 0x3E]);

@@ -112,16 +112,19 @@ public class SellerProductInfoController
     @GetMapping("/index")
     public ModelAndView index(@RequestParam(value = "productId",required = false) String productId,Map map)
     {
-        // 如果商品ID为空则结束整个方法
-        if (!StringUtils.hasText(productId))
-        {
-            return null;
-        }
-        // 根据商品ID 查询某个商品的商品信息
-        ProductInfo productInfo=productInfoService.findById(productId);
-        // 设置产品信息
-        map.put("product",productInfo);
-
+    // 如果商品ID为空则结束整个方法
+    /*if (!StringUtils.hasText(productId))
+    {
+        return null;
+    }*/
+        //这里要注意，否则在新增时就会跳转到空白页面了
+    if (StringUtils.hasText(productId))
+    {
+      // 根据商品ID 查询某个商品的商品信息
+      ProductInfo productInfo = productInfoService.findById(productId);
+      // 设置产品信息
+      map.put("product", productInfo);
+    }
 
         //查询所有的商品类目信息
         List<ProductCategory> productCategoryList = productCategoryService.findAll();

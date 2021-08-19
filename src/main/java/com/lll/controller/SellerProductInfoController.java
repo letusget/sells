@@ -95,7 +95,8 @@ public class SellerProductInfoController
     public ModelAndView offSale(@RequestParam("productId") String productId,
                                 Map<String,Object> map)
     {
-        try{
+        try
+        {
             //商品下架
             productInfoService.offSale(productId);
         }catch (SellException e)

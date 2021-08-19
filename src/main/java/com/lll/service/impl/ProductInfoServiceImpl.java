@@ -153,6 +153,7 @@ public class ProductInfoServiceImpl implements ProductInfoService
         }
 
         //更新商品状态，将 下架商品（1） 的状态改为 商品上架（0）
+        productInfo.setProductStatus(ProductStatusEnum.UP.getCode());
         return productInfoDAO.save(productInfo);
 
     }

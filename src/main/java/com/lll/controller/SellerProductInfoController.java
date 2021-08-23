@@ -29,7 +29,7 @@ import java.util.Map;
 
 /**
  * 商品信息
- *http://192.168.1.19:8080/sell/buyer/product/list
+ *http://192.168.1.3:8080/sell/buyer/product/list
  */
 @Controller
 @RequestMapping("/seller/product")

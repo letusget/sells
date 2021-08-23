@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 /**
  * 微信公众号 相关配置
  */
+
 @Data
 @Component
 //@ConfigurationProperties(prefix = "wechat")
@@ -23,3 +24,4 @@ public class WechatAccountConfig
     private String mpAppSecret;
 
 }
+

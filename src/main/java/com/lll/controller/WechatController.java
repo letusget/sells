@@ -16,13 +16,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 /**
  * 微信网页授权
  * http://iswilliam.natapp1.cc/sell/wechat/authorize
  */
-//@RestController
+
+//@RestController   // 返回JSON 即使重定向 页面也不会发生跳转
 @Controller
 @RequestMapping("/wechat")
 @Slf4j
@@ -31,29 +33,30 @@ public class WechatController
     /**
      * 微信公众号Service
      */
-    @Autowired
+    @Autowired(required = false)
     private WxMpService wxMpService;
 
     /**
      * 公众号授权
      */
     @GetMapping("/authorize")
-    public String  authorize(@RequestParam("returnUrl") String returnUrl)
-    {
+    public String  authorize(@RequestParam("returnUrl") String returnUrl) throws UnsupportedEncodingException {
         WxMpService wxMpService = new WxMpServiceImpl();
 
         //  1. 配置
         //application.yml中的mpAppId和mpAppSecret
 
-
         //  2. 调用 网页授权方法
-        String url = "http://iswilliam.natapp1.cc/sell/wechat/authorize";
+        String url = "http://iswilliam.natapp1.cc/sell/wechat/userInfo";
         // 注意returnUrl要Encoder
         // String oauth2buildAuthorizationUrl(String var1, String var2, String var3);
+           /* String redirectUrl = wxMpService.oauth2buildAuthorizationUrl
+                    (url, WxConsts.OAUTH2_SCOPE_USER_INFO, URLEncoder.encode(returnUrl));
+            */
         String redirectUrl = wxMpService.oauth2buildAuthorizationUrl
-                (url, WxConsts.OAUTH2_SCOPE_USER_INFO, URLEncoder.encode(returnUrl));
-        return "redirect:" + redirectUrl;
-
+                (url, WxConsts.OAUTH2_SCOPE_USER_INFO, URLEncoder.encode(returnUrl,"utf-8"));
+        log.info("[微信网页授权]获取code，result={}",redirectUrl);
+            return "redirect:" + redirectUrl;
 
     }
 
@@ -68,16 +71,15 @@ public class WechatController
             wxMpOAuth2AccessToken = wxMpService.oauth2getAccessToken(code);
         }catch (WxErrorException e)
         {
-            log.error("[微信网页授权]",e);
+            log.error("[微信网页授权]{}",e);
             throw new SellException(ResultEnum.WECHAT_MP_ERROR.getCode(),e.getError().getErrorMsg());
         }
         String openId=wxMpOAuth2AccessToken.getOpenId();
         // 这里要特别注意,url里的参数必须写openid,不能写成openId,因为前端代码是获取openid的值
         return "redirect:" + returnUrl + "?openid=" + openId;
 
-
-
     }
 
 
 }
+

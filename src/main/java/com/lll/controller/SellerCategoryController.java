@@ -30,6 +30,7 @@ public class SellerCategoryController
 {
     //商品类目Service
     @Autowired
+    //对类成员变量、方法及构造函数进行标注，完成自动装配的工作,消除 set get 方法
     private ProductCategoryService categoryService;
 
     /**

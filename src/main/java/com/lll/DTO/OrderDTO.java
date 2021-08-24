@@ -23,6 +23,7 @@ import java.util.Date;
 
 /**
  * 订单DTO
+ * Data Transfer Object 数据传输对象
  */
 //@Entity
 @Data
@@ -71,7 +72,7 @@ public class OrderDTO
     @Transient
     //要求JSON数据中这个字段必须返回  但是返回的又不能是null 为null时显示默认值
     //private List<OrderDetail> orderDetails = new ArrayList<>();
-            // 在规范化接口文档中(如果字段为null则统一不返回) orderDetailList是作为非必须返回字段
+    // 在规范化接口文档中(如果字段为null则统一不返回) orderDetailList是作为非必须返回字段
     List<OrderDetail> orderDetails;
 
     /**

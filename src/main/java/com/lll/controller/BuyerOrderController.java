@@ -26,7 +26,7 @@ import java.util.Map;
 
 /**
  * 用户订单
- * http://192.168.1.19:8080/sell/seller/category/list
+ * http://192.168.1.3:8080/sell/seller/category/list
  */
 @Slf4j
 @RestController

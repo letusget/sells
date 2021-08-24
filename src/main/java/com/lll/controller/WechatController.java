@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 
 /**
@@ -33,15 +34,16 @@ public class WechatController
     /**
      * 微信公众号Service
      */
-    @Autowired(required = false)
+    @Autowired
     private WxMpService wxMpService;
 
     /**
      * 公众号授权
      */
     @GetMapping("/authorize")
+    //@RequestMapping("authorize")
     public String  authorize(@RequestParam("returnUrl") String returnUrl) throws UnsupportedEncodingException {
-        WxMpService wxMpService = new WxMpServiceImpl();
+        //WxMpService wxMpService = new WxMpServiceImpl();
 
         //  1. 配置
         //application.yml中的mpAppId和mpAppSecret
@@ -53,8 +55,15 @@ public class WechatController
            /* String redirectUrl = wxMpService.oauth2buildAuthorizationUrl
                     (url, WxConsts.OAUTH2_SCOPE_USER_INFO, URLEncoder.encode(returnUrl));
             */
+
+        /**
+         * 第一个参数是获得授权码code后回调的地址
+         * 第二个是策略：获得简单的授权，还是希望获得用户的信息
+         * 第三个参数是我们希望携带的参数:查看API文档需要返回returnUrl 所以我们就携带它
+         */
         String redirectUrl = wxMpService.oauth2buildAuthorizationUrl
                 (url, WxConsts.OAUTH2_SCOPE_USER_INFO, URLEncoder.encode(returnUrl,"utf-8"));
+
         log.info("[微信网页授权]获取code，result={}",redirectUrl);
             return "redirect:" + redirectUrl;
 
@@ -63,8 +72,9 @@ public class WechatController
     /**
      * 获取公众号的openid信息
      */
-    @GetMapping("/userInfo")
-    public String userInfo(@RequestParam("code") String code, @RequestParam("state") String returnUrl)
+    @GetMapping("userInfo")
+    //@RequestMapping("userInfo")
+    public String userInfo(@RequestParam("code") String code, @RequestParam("state") String returnUrl) throws UnsupportedEncodingException
     {
         WxMpOAuth2AccessToken wxMpOAuth2AccessToken=new WxMpOAuth2AccessToken();
         try{
@@ -77,8 +87,16 @@ public class WechatController
         String openId=wxMpOAuth2AccessToken.getOpenId();
         // 这里要特别注意,url里的参数必须写openid,不能写成openId,因为前端代码是获取openid的值
         return "redirect:" + returnUrl + "?openid=" + openId;
+        //return  "redirect:"+ URLDecoder.decode(returnUrl,"UTF-8")+"?openid="+openId;
 
     }
+
+    //测试是否获得openid
+    @RequestMapping("testOpenid")
+    public void testOpenid(@RequestParam("openid")String openid){
+        log.info("[获得用户的openid为]:{}",openid);
+    }
+
 
 
 }

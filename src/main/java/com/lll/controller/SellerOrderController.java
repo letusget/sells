@@ -92,9 +92,9 @@ public class SellerOrderController
 
     /**
      * 订单详情
-     * http://192.168.1.19:8080/sell/seller/order/detail
-     * http://192.168.1.19:8080/sell//seller/order/list?page=1&size=2
-     *http://192.168.1.19:8080/sell/seller/order/detail?orderId=1626841653412798517
+     * http://192.168.1.3:8080/sell/seller/order/detail
+     * http://192.168.1.3:8080/sell//seller/order/list?page=1&size=2
+     *http://192.168.1.3:8080/sell/seller/order/detail?orderId=1626841653412798517
      */
     @GetMapping("/detail")
     public ModelAndView detail(@RequestParam("orderId")

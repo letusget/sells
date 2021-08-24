@@ -22,6 +22,14 @@
     </properties>
     <dependencies>
 
+        <!--配置注解执行器 start-->
+        <dependency>
+            <groupId> org.springframework.boot </groupId>
+            <artifactId> spring-boot-configuration-processor </artifactId>
+            <optional> true </optional>
+        </dependency>
+        <!--配置注解执行器 end-->
+
         <!--微信公众号依赖 start-->
         <dependency>
             <groupId>com.github.binarywang</groupId>

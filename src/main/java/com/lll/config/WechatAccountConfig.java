@@ -2,15 +2,18 @@ package com.lll.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 /**
  * 微信公众号 相关配置
  */
-
 @Data
+//@Configuration
 @Component
-//@ConfigurationProperties(prefix = "wechat")
+@ConfigurationProperties(prefix = "wechat")
+//@PropertySource(value = "classpath:application.yml", encoding = "utf-8")
 public class WechatAccountConfig
 {
     /**

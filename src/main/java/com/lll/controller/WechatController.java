@@ -61,8 +61,10 @@ public class WechatController
          * 第二个是策略：获得简单的授权，还是希望获得用户的信息
          * 第三个参数是我们希望携带的参数:查看API文档需要返回returnUrl 所以我们就携带它
          */
+        /*String redirectUrl = wxMpService.oauth2buildAuthorizationUrl
+                (url, WxConsts.OAUTH2_SCOPE_USER_INFO, URLEncoder.encode(returnUrl,"utf-8"));*/
         String redirectUrl = wxMpService.oauth2buildAuthorizationUrl
-                (url, WxConsts.OAUTH2_SCOPE_USER_INFO, URLEncoder.encode(returnUrl,"utf-8"));
+                (url, WxConsts.OAUTH2_SCOPE_BASE, URLEncoder.encode(returnUrl));
 
         log.info("[微信网页授权]获取code，result={}",redirectUrl);
             return "redirect:" + redirectUrl;
@@ -72,7 +74,7 @@ public class WechatController
     /**
      * 获取公众号的openid信息
      */
-    @GetMapping("userInfo")
+    @GetMapping("/userInfo")
     //@RequestMapping("userInfo")
     public String userInfo(@RequestParam("code") String code, @RequestParam("state") String returnUrl) throws UnsupportedEncodingException
     {
@@ -92,10 +94,10 @@ public class WechatController
     }
 
     //测试是否获得openid
-    @RequestMapping("testOpenid")
-    public void testOpenid(@RequestParam("openid")String openid){
-        log.info("[获得用户的openid为]:{}",openid);
-    }
+    //@RequestMapping("testOpenid")
+    //public void testOpenid(@RequestParam("openid")String openid){
+        //log.info("[获得用户的openid为]:{}",openid);
+    //}
 
 
 

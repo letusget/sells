@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Configuration  //指示一个类声明一个或多个@Bean方法，并且可以由Spring容器处理，以便在运行时为这些bean生成BeanDefinition和服务请求
-//@Component    //标记为spring容器中的一个Bean
+@Component    //标记为spring容器中的一个Bean
 public class WechatMpConfig
 {
     @Autowired

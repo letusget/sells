@@ -17,7 +17,6 @@ import java.math.BigDecimal;
 @Table(name = "order_detail")
 public class OrderDetail implements Serializable
 {
-
     private static final long serialVersionUID = 1L;
 
     @Id

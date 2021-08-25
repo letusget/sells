@@ -10,7 +10,7 @@
 
     <script>
         var t = null;
-        t = setTimeout(time, 1000); //開始运行
+        t = setTimeout(time, 1000); //开始运行
         function time() {
             clearTimeout(t); //清除定时器
             dt = new Date();
